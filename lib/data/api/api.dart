@@ -8,10 +8,21 @@ class Api {
   final Dio _dio;
 
   Api(this._dio);
-  Future<Joke> getJoke() async {
-    final response = await _dio.get(ApiConstants.randomEndpoint);
+  Future<Joke> getJoke({String? category}) async {
+    final response = await _dio.get(
+      ApiConstants.randomEndpoint,
+      queryParameters: {
+        if (category != null) ApiConstants.categoryQuery: category,
+      },
+    );
     final json = response.data;
     return Joke.fromJson(json);
+  }
+
+  Future<List<String>> getCategories() async {
+    final response = await _dio.get(ApiConstants.categoriesEndpoint);
+    final json = response.data;
+    return (json as Iterable<dynamic>).map((e) => e as String).toList();
   }
 }
 

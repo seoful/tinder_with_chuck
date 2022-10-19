@@ -20,15 +20,22 @@ Joke _$JokeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Joke {
+  @HiveField(0)
   List<String> get categories => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get id => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: "created_at")
   String get createdAt => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: "icon_url")
   String get iconUrl => throw _privateConstructorUsedError;
+  @HiveField(4)
   @JsonKey(name: "updated_at")
   String get updatedAt => throw _privateConstructorUsedError;
+  @HiveField(5)
   String get url => throw _privateConstructorUsedError;
+  @HiveField(6)
   String get value => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,13 +48,13 @@ abstract class $JokeCopyWith<$Res> {
   factory $JokeCopyWith(Joke value, $Res Function(Joke) then) =
       _$JokeCopyWithImpl<$Res>;
   $Res call(
-      {List<String> categories,
-      String id,
-      @JsonKey(name: "created_at") String createdAt,
-      @JsonKey(name: "icon_url") String iconUrl,
-      @JsonKey(name: "updated_at") String updatedAt,
-      String url,
-      String value});
+      {@HiveField(0) List<String> categories,
+      @HiveField(1) String id,
+      @HiveField(2) @JsonKey(name: "created_at") String createdAt,
+      @HiveField(3) @JsonKey(name: "icon_url") String iconUrl,
+      @HiveField(4) @JsonKey(name: "updated_at") String updatedAt,
+      @HiveField(5) String url,
+      @HiveField(6) String value});
 }
 
 /// @nodoc
@@ -107,13 +114,13 @@ abstract class _$$_JokeCopyWith<$Res> implements $JokeCopyWith<$Res> {
       __$$_JokeCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<String> categories,
-      String id,
-      @JsonKey(name: "created_at") String createdAt,
-      @JsonKey(name: "icon_url") String iconUrl,
-      @JsonKey(name: "updated_at") String updatedAt,
-      String url,
-      String value});
+      {@HiveField(0) List<String> categories,
+      @HiveField(1) String id,
+      @HiveField(2) @JsonKey(name: "created_at") String createdAt,
+      @HiveField(3) @JsonKey(name: "icon_url") String iconUrl,
+      @HiveField(4) @JsonKey(name: "updated_at") String updatedAt,
+      @HiveField(5) String url,
+      @HiveField(6) String value});
 }
 
 /// @nodoc
@@ -172,13 +179,13 @@ class __$$_JokeCopyWithImpl<$Res> extends _$JokeCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Joke implements _Joke {
   _$_Joke(
-      {final List<String> categories = const [],
-      required this.id,
-      @JsonKey(name: "created_at") required this.createdAt,
-      @JsonKey(name: "icon_url") required this.iconUrl,
-      @JsonKey(name: "updated_at") required this.updatedAt,
-      required this.url,
-      required this.value})
+      {@HiveField(0) final List<String> categories = const [],
+      @HiveField(1) required this.id,
+      @HiveField(2) @JsonKey(name: "created_at") required this.createdAt,
+      @HiveField(3) @JsonKey(name: "icon_url") required this.iconUrl,
+      @HiveField(4) @JsonKey(name: "updated_at") required this.updatedAt,
+      @HiveField(5) required this.url,
+      @HiveField(6) required this.value})
       : _categories = categories;
 
   factory _$_Joke.fromJson(Map<String, dynamic> json) => _$$_JokeFromJson(json);
@@ -186,25 +193,32 @@ class _$_Joke implements _Joke {
   final List<String> _categories;
   @override
   @JsonKey()
+  @HiveField(0)
   List<String> get categories {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_categories);
   }
 
   @override
+  @HiveField(1)
   final String id;
   @override
+  @HiveField(2)
   @JsonKey(name: "created_at")
   final String createdAt;
   @override
+  @HiveField(3)
   @JsonKey(name: "icon_url")
   final String iconUrl;
   @override
+  @HiveField(4)
   @JsonKey(name: "updated_at")
   final String updatedAt;
   @override
+  @HiveField(5)
   final String url;
   @override
+  @HiveField(6)
   final String value;
 
   @override
@@ -254,32 +268,49 @@ class _$_Joke implements _Joke {
 
 abstract class _Joke implements Joke {
   factory _Joke(
-      {final List<String> categories,
-      required final String id,
-      @JsonKey(name: "created_at") required final String createdAt,
-      @JsonKey(name: "icon_url") required final String iconUrl,
-      @JsonKey(name: "updated_at") required final String updatedAt,
-      required final String url,
-      required final String value}) = _$_Joke;
+      {@HiveField(0)
+          final List<String> categories,
+      @HiveField(1)
+          required final String id,
+      @HiveField(2)
+      @JsonKey(name: "created_at")
+          required final String createdAt,
+      @HiveField(3)
+      @JsonKey(name: "icon_url")
+          required final String iconUrl,
+      @HiveField(4)
+      @JsonKey(name: "updated_at")
+          required final String updatedAt,
+      @HiveField(5)
+          required final String url,
+      @HiveField(6)
+          required final String value}) = _$_Joke;
 
   factory _Joke.fromJson(Map<String, dynamic> json) = _$_Joke.fromJson;
 
   @override
+  @HiveField(0)
   List<String> get categories;
   @override
+  @HiveField(1)
   String get id;
   @override
+  @HiveField(2)
   @JsonKey(name: "created_at")
   String get createdAt;
   @override
+  @HiveField(3)
   @JsonKey(name: "icon_url")
   String get iconUrl;
   @override
+  @HiveField(4)
   @JsonKey(name: "updated_at")
   String get updatedAt;
   @override
+  @HiveField(5)
   String get url;
   @override
+  @HiveField(6)
   String get value;
   @override
   @JsonKey(ignore: true)
