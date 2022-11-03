@@ -10,7 +10,7 @@ class Api {
   Api(this._dio);
   Future<Joke> getJoke({String? category}) async {
     final response = await _dio.get(
-      ApiConstants.randomEndpoint,
+      ApiConstants.randomJokeEndpoint,
       queryParameters: {
         if (category != null) ApiConstants.categoryQuery: category,
       },

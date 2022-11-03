@@ -1,5 +1,5 @@
 import 'package:chuck_norris/domain/joke.dart';
-import 'package:chuck_norris/presentation/notifier/cards_screen_state.dart';
+import 'package:chuck_norris/presentation/main_screen/notifier/cards_screen_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CardsScreenNotifier extends StateNotifier<CardsScreenState> {

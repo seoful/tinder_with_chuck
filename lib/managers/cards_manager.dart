@@ -1,6 +1,7 @@
 import 'package:chuck_norris/domain/joke.dart';
-import 'package:chuck_norris/managers/memory_manager.dart';
-import 'package:chuck_norris/presentation/notifier/cards_screen_notifier.dart';
+import 'package:chuck_norris/managers/favourites_manager.dart';
+import 'package:chuck_norris/managers/statistics_manager.dart';
+import 'package:chuck_norris/presentation/main_screen/notifier/cards_screen_notifier.dart';
 import 'package:chuck_norris/repositories/jokes_repository.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,31 +9,50 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CardsManager {
   final CardsScreenNotifier notifier;
   final JokesRepository repository;
-  final MemoryManager memoryManager;
-
+  final StatisticsManager statisticsManager;
+  final FavouritesManager favouritesManager;
   static const int _loadingThreshold = 2;
 
-  CardsManager(this.notifier, this.repository, this.memoryManager);
+  CardsManager(
+    this.notifier,
+    this.repository,
+    this.statisticsManager,
+    this.favouritesManager,
+  );
 
   List<Joke> jokes = [];
 
-  Future<void> init() async {
-    await memoryManager.init();
+  String? currentCategory;
+
+  late List<String> categories;
+
+  Future<void> start() async {
+    notifier.setLoading();
+    favouritesManager.init();
+    final categoriesFromApi = await repository.getCategories();
+    if (categoriesFromApi.isEmpty) {
+      notifier.setError();
+      return;
+    }
+    categories = categoriesFromApi;
+    _goToNextJoke();
   }
 
-  void start() {
+  void setCategory(String? category) {
+    currentCategory = category;
+    jokes = [];
     _goToNextJoke();
   }
 
   void likeJoke() {
-    memoryManager.markSeen();
-    memoryManager.like();
+    statisticsManager.markSeen();
+    statisticsManager.like();
     _goToNextJoke();
   }
 
   void dislikeJoke() {
-    memoryManager.markSeen();
-    memoryManager.dislike();
+    statisticsManager.markSeen();
+    statisticsManager.dislike();
     _goToNextJoke();
   }
 
@@ -52,7 +72,7 @@ class CardsManager {
   }
 
   Future<bool> _loadJokes({VoidCallback? onError}) async {
-    final jokesOrNull = await repository.getJokes();
+    final jokesOrNull = await repository.getJokes(category: currentCategory);
     if (jokesOrNull != null) {
       jokes.addAll(jokesOrNull);
     } else {
@@ -66,6 +86,7 @@ final cardsManagerProvider = Provider<CardsManager>((ref) {
   return CardsManager(
     ref.read(cardsScreenNotifierProvider.notifier),
     ref.read(jokesRepositoryProvider),
-    ref.read(memoryManagerProvider),
+    ref.read(statisticsManagerProvider),
+    ref.read(favouritesManagerProvider),
   );
 });

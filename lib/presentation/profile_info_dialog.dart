@@ -1,5 +1,6 @@
-import 'package:chuck_norris/managers/memory_manager.dart';
 import 'package:chuck_norris/presentation/components/animated_button.dart';
+import 'package:chuck_norris/s.dart';
+import 'package:chuck_norris/state_holders/statistics_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,19 +9,19 @@ class ProfileInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final info = ref.watch(memoryManagerProvider).memoryData;
+    final info = ref.watch(statisticsNotifierProvider);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text("Jokes liked: ${info.liked}"),
-        Text("Jokes disliked: ${info.disliked}"),
-        Text("Jokes seen: ${info.seen}"),
+        Text("${S.of(context).jokes_liked} ${info.liked}"),
+        Text("${S.of(context).jokes_disliked} ${info.disliked}"),
+        Text("${S.of(context).jokes_seen} ${info.seen}"),
       ],
     );
   }
 }
 
-Future<void> showPersonalInfoDialog(BuildContext context) {
+Future<void> openPersonalInfoScreen(BuildContext context) {
   return showDialog(
     context: context,
     builder: (context) => AlertDialog(
@@ -29,9 +30,9 @@ Future<void> showPersonalInfoDialog(BuildContext context) {
       actions: [
         AnimatedButton(
           onTap: () => Navigator.pop(context),
-          child: const Text(
-            "Ок",
-            style: TextStyle(color: Colors.blue),
+          child: Text(
+            S.of(context).ok,
+            style: const TextStyle(color: Colors.blue),
           ),
         )
       ],

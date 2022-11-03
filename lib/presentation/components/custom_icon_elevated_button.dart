@@ -1,16 +1,16 @@
 import 'package:chuck_norris/presentation/components/animated_button.dart';
 import 'package:flutter/material.dart';
 
-class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({
+class CustomIconElevatedButton extends StatelessWidget {
+  const CustomIconElevatedButton({
     super.key,
-    required this.child,
-    this.padding = const EdgeInsets.all(10),
+    required this.icon,
+    required this.iconColor,
     this.onTap,
   });
 
-  final Widget child;
-  final EdgeInsets padding;
+  final IconData icon;
+  final Color iconColor;
   final VoidCallback? onTap;
 
   @override
@@ -18,8 +18,8 @@ class CustomElevatedButton extends StatelessWidget {
     return AnimatedButton(
       onTap: onTap,
       child: Container(
-        alignment: Alignment.center,
         padding: EdgeInsets.all(MediaQuery.of(context).size.height / 64),
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(1000),
@@ -30,7 +30,11 @@ class CustomElevatedButton extends StatelessWidget {
             ),
           ],
         ),
-        child: child,
+        child: Icon(
+          icon,
+          color: iconColor,
+          size: MediaQuery.of(context).size.height / 32,
+        ),
       ),
     );
   }

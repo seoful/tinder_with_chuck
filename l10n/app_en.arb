@@ -1,0 +1,13 @@
+{
+    "jokes_liked": "Jokes liked:",
+    "jokes_disliked": "Jokes disliked:",
+    "jokes_seen": "Jokes seen:",
+    "ok": "Ok",
+    "start": "Start",
+    "something_went_wrong": "Something went wrong",
+    "retry": "Retry",
+    "delete": "Delete",
+    "none": "None",
+    "favourites": "Favourites",
+    "no_favourites": "You have not added any favourites yet"
+}

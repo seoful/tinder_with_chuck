@@ -7,6 +7,9 @@
 - storing personal statistics locally
 - opening a single joke page in browser
 - handling network exceptions
+- filtering jokes by category
+- adding jokes to favourites and storing them locally
+- localization
 
 ## Screenshots
 ### Start Screen
@@ -17,8 +20,14 @@
 ![](https://i.imgur.com/Dog3rJ5.png)
 ### Error screen
 ![](https://i.imgur.com/CBMHdsc.png)
+### Choosing category
+![](https://i.imgur.com/Q85nH1y.png)
+### Favourites screen
+![](https://i.imgur.com/vhYaLib.png)
+
+
 
 
 ## Apk
 
-[Download](https://drive.google.com/file/d/1D7RY91W6AFhRBHKzu2ELSBOmq5VjV1nT/view?usp=sharing)
+[Download](https://drive.google.com/file/d/1EHDrIAEMKEEOsiYHLrDx5j0Y6VHJ5lK7/view?usp=sharing)
